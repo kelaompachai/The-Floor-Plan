@@ -6,7 +6,10 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
+const express = require('express');
 
+
+/*
 // define a function that will dictate how the server responds to requests
 const requestListener = (req, res) => {
   // input: two objects, the request object and the response object
@@ -24,6 +27,7 @@ const requestListener = (req, res) => {
     return res.end();
   }
 };
+*/
 
 // next, use the createServer method on http to create a server
 const server = http.createServer(requestListener);
