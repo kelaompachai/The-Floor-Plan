@@ -2,12 +2,26 @@
 // with the file at ./client/index.html
 
 // first, I need to get the built in modules from node
-const http = require('http');
-const fs = require('fs');
+// const http = require('http');
+// const fs = require('fs');
 const path = require('path');
 
+// get express and create an app
 const express = require('express');
+const app = express();
 
+// set PORT
+const PORT = 3000;
+
+// console.log('express: ', express);
+// console.log('app: ', app);
+// console.log(app.listen);
+// console.log(app.listen.call);
+
+// serve the index.html when a get request is sent to the root url
+app.get('/', (req, res) => {
+  return res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+});
 
 /*
 // define a function that will dictate how the server responds to requests
@@ -29,9 +43,14 @@ const requestListener = (req, res) => {
 };
 */
 
-// next, use the createServer method on http to create a server
-const server = http.createServer(requestListener);
+// every request that was not previously handled should receive a 404 response
+app.use((req, res) => {
+  // res.write('Cannot find requested file.');
+  res.status(404).send('Cannot find requested file.');
+});
+
 
 // make the server listen on port 3000
-const PORT = 3000;
-server.listen(PORT, () => { console.log('Listening on port 3000.'); });
+app.listen(3000, () => {
+  console.log('Listening on port 3000.');
+});
