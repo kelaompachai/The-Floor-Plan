@@ -18,10 +18,9 @@ const PORT = 3000;
 // console.log(app.listen);
 // console.log(app.listen.call);
 
-// serve the index.html when a get request is sent to the root url
-app.get('/', (req, res) => {
-  return res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
-});
+// serve static files
+// serve index.html and styles.css when get request is made to root url
+app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
 
 /*
 // define a function that will dictate how the server responds to requests
@@ -48,7 +47,6 @@ app.use((req, res) => {
   // res.write('Cannot find requested file.');
   res.status(404).send('Cannot find requested file.');
 });
-
 
 // make the server listen on port 3000
 app.listen(3000, () => {
