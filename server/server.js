@@ -52,6 +52,28 @@ app.use((req, res) => {
   res.status(404).send('Cannot find requested file.');
 });
 
+// global error handler
+app.use((err, req, res, next) => {
+  // declare a default error
+  const defaultError = {
+    log: 'An error occured.',
+    status: 500,
+    message: { err },
+  };
+
+  // replace the default error with the specific error information if it is available
+  const error = {
+    ...defaultError,
+    ...err,
+  };
+
+  // write the error to the server's console
+  console.log(error);
+
+  // send a response back to the client
+  res.status(error.status).json(error.message);
+});
+
 // make the server listen on port 3000
 app.listen(PORT, () => {
   console.log('Listening on port 3000.');
