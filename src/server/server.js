@@ -22,6 +22,7 @@ const PORT = 3000;
 
 // serve static files
 // serve index.html and styles.css when get request is made to root url
+app.use(express.static(path.join(__dirname, '..', '..', 'dist')));
 app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
 
 /*
