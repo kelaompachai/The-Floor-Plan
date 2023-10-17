@@ -9,4 +9,4 @@ console.log(cheese);
 const root = createRoot(document.querySelector('#root'));
 
 // render the app into the root
-// root.render(<App />);
+root.render(<App />);
