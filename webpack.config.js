@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: path.join(__dirname, 'src', 'index.js'),
@@ -19,15 +20,22 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
+  plugins: [new HtmlWebpackPlugin()],
   devServer: {
     port: 8080,
     hot: true,
-    static: [
-      { directory: path.join(__dirname, 'dist') },
-      { directory: path.join(__dirname, 'src', 'client', 'public') },
-    ],
+    // static: [
+    //   { directory: path.join(__dirname, 'dist') },
+    //   { directory: path.join(__dirname, 'src', 'client', 'public') },
+    // ],
+    static: false,
     proxy: {
       '/': 'http://localhost:3000',
     },

@@ -2,11 +2,14 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './client/public/app.jsx';
 
-// get the div that is to contain the app and make it the root
-const cheese = document.querySelector('#root');
-console.log(cheese);
+import './client/public/styles/styles.css';
 
-const root = createRoot(document.querySelector('#root'));
+const cheese = document.createElement('main');
+document.querySelector('body').append(cheese);
+
+const root = createRoot(cheese);
+
+console.log(root);
 
 // render the app into the root
 root.render(<App />);
