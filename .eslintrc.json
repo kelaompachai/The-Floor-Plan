@@ -4,13 +4,14 @@
         "es2021": true,
         "node": true
     },
-    "extends": "airbnb-base",
+    "extends": "airbnb",
     "parserOptions": {
         "ecmaVersion": "latest"
     },
     "rules": {
         "no-console": "off",
         "no-unused-vars": "off",
-        "no-multiple-empty-lines": ["error", {"max": 2}]
+        "no-multiple-empty-lines": ["error", {"max": 2}],
+        "no-extraneous-dependencies": "off"
     }
 }

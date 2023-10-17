@@ -1,19 +1,17 @@
 import React from 'react';
 
-const App = () => {
+function App() {
   return (
     <div>
-      <input type = 'text'></input>
+      <input type="text" />
       <button>View Wing</button>
-      <input type = 'text'></input>
+      <input type="text" />
       <button>New Wing</button>
-      <input type = 'text'></input>
+      <input type="text" />
       <button>New Room</button>
-      <input type = 'text'></input>
-      <button>Remove Task</button><button>Add Task</button>
-      <button>Remove Task</button><button>Add Task</button>
+      <input type="text" />
     </div>
   );
-};
+}
 
 export default App;

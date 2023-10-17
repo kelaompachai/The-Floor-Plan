@@ -1,10 +1,4 @@
-// this file makes a port on my local machine listen for get
-// requests on port 3000 and responds to the requests
-// with the file at ./client/index.html
-
-// first, I need to get the built in modules from node
-// const http = require('http');
-// const fs = require('fs');
+// this file is the entry point for the server
 const path = require('path');
 
 // get express and create an app
@@ -15,17 +9,22 @@ const app = express();
 // set PORT
 const PORT = 3000;
 
+// require in the router
+const router = require('./routes/router');
+
 // serve static files
 // serve index.html and styles.css when get request is made to root url
 app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
 // serve bundle.js when it is requested by index.html
 app.use('/dist', express.static(path.join(__dirname, '..', '..', 'dist')));
 
+
+app.use('/data', router);
+
 // serve the bundle.js file when it is requested from the index.html
 // app.get('/dist/bundle.js', (req, res, next) => {
 //   res.sendFile(path.join(__dirname, '..', '..', 'dist', 'bundle.js'));
 // });
-
 
 // every request that was not previously handled should receive a 404 response
 app.use((req, res) => {
