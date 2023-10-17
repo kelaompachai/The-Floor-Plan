@@ -23,6 +23,7 @@ module.exports = {
   },
   devServer: {
     port: 8080,
+    hot: true,
     static: [
       { directory: path.join(__dirname, 'dist') },
       { directory: path.join(__dirname, 'src', 'client', 'public') },

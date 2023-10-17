@@ -18,14 +18,13 @@ const PORT = 3000;
 // serve static files
 // serve index.html and styles.css when get request is made to root url
 app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
-
-// app.use(express.static(path.join(__dirname, '..', '..', 'dist')));
-// I do not understand why the previous line is not working.
+// serve bundle.js when it is requested by index.html
+app.use('/dist', express.static(path.join(__dirname, '..', '..', 'dist')));
 
 // serve the bundle.js file when it is requested from the index.html
-app.get('/dist/bundle.js', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '..', '..', 'dist', 'bundle.js'));
-});
+// app.get('/dist/bundle.js', (req, res, next) => {
+//   res.sendFile(path.join(__dirname, '..', '..', 'dist', 'bundle.js'));
+// });
 
 
 // every request that was not previously handled should receive a 404 response
