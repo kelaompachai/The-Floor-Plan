@@ -12,6 +12,9 @@ const PORT = 3000;
 // require in the router
 const router = require('./routes/router');
 
+// parse incoming request body
+app.use(express.json());
+
 // serve static files
 // serve index.html and styles.css when get request is made to root url
 app.use(express.static(path.join(__dirname, '..', 'client', 'public')));

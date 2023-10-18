@@ -12,16 +12,11 @@ router.get(
   (req, res) => res.status(200).json(res.locals.floorData),
 );
 
-
-
-
-
-
-
-
-
-
-
+router.patch(
+  '/',
+  controller.completeTask,
+  (req, res) => res.status(200).json('update successful'),
+);
 
 
 module.exports = router;
