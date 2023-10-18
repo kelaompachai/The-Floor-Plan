@@ -8,7 +8,7 @@ const controller = {};
 controller.getFloors = (req, res, next) => {
   // console.log('got here');
 
-  const selector = 'SELECT * FROM floors;';
+  const selector = 'SELECT roomnumber, task FROM floors ORDER BY roomnumber';
   db.query(selector)
     .then((data) => {
       res.locals.floorData = data.rows;

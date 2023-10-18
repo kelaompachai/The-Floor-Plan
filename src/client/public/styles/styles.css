@@ -50,7 +50,7 @@ button {
 }
 
 .room {
-  border: solid 1px red;
+  /* border: solid 1px red; */
   margin: 0px 4px 2px;
   display: flex;
   justify-content: center;
@@ -58,7 +58,39 @@ button {
 }
 
 .hallway {
-  border: solid 1px green;
+  border: solid 1px black;
   grid-area: center;
   height: 100%;
+}
+
+.done {
+  background-color: lightgreen;
+}
+
+.strip {
+  background-color: coral;
+}
+
+.scrub {
+  background-color: lightblue;
+}
+
+.burnish {
+  background-color: lightyellow;
+}
+
+.manifestDiv {
+  position: relative;
+}
+
+.x {
+  position: absolute;
+  top: .8em;
+  right: 1em;
+}
+
+.manifestDiv > p {
+  font-size: 1.5em;
+  margin-top: 4px;
+  margin-bottom: 3px;
 }
