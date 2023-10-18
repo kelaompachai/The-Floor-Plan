@@ -41,4 +41,7 @@ module.exports = {
       '/': 'http://localhost:3000',
     },
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 };
