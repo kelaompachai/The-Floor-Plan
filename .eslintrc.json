@@ -12,6 +12,7 @@
         "no-console": "off",
         "no-unused-vars": "off",
         "no-multiple-empty-lines": ["error", {"max": 2}],
-        "no-extraneous-dependencies": "off"
+        "no-extraneous-dependencies": "off",
+        "react/prop-types": "off"
     }
 }
