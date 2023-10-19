@@ -1,16 +1,22 @@
 // this file is the entry point for the server
 const path = require('path');
 
-// get express and create an app
+// get express and body parser
 const express = require('express');
+const bodyParser = require('body-parser');
 
+// create app
 const app = express();
+
 
 // set PORT
 const PORT = 3000;
 
 // require in the router
 const router = require('./routes/router');
+
+// parse incoming urlencoded information
+app.use(bodyParser.urlencoded());
 
 // parse incoming request body
 app.use(express.json());
@@ -26,6 +32,13 @@ app.use('/dist', express.static(path.join(__dirname, '..', '..', 'dist')));
 
 
 app.use('/data', router);
+
+// working on a route for authentication page
+app.post('/users', (req, res) => {
+  console.log('req.headers', req.headers);
+  console.log('req.body', req.body);
+  res.redirect('/');
+});
 
 // serve the bundle.js file when it is requested from the index.html
 // app.get('/dist/bundle.js', (req, res, next) => {

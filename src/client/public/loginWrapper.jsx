@@ -1,13 +1,14 @@
 // the components that make up the login page
 
 import React, { useState } from 'react';
+import Login from './components/login';
 
-function Login() {
+function LoginWrapper() {
   return (
     <div>
-      Hello World.
+      <Login />
     </div>
   );
 }
 
-export default Login;
+export default LoginWrapper;
