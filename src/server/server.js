@@ -66,8 +66,8 @@ app.use((err, req, res, next) => {
   // write the error to the server's console
   console.log(error);
 
-  // send a response back to the client
-  res.status(error.status).json(error.message);
+  // send a response back to the client if res.locals.redirect is false
+  if (!res.locals.redirect) res.status(error.status).json(error.message);
 });
 
 // make the server listen on port 3000

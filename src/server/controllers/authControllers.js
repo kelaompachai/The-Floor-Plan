@@ -51,7 +51,6 @@ authControllers.loginController = (req, res, next) => {
   db.query(sqlQuery, queryParams)
     .then((data) => {
       const hashedPassword = data.rows[0].password;
-      console.log(hashedPassword);
       bcrypt.compare(password, hashedPassword)
         .then((data2) => {
           if (data2) return next();
@@ -63,11 +62,15 @@ authControllers.loginController = (req, res, next) => {
           message: { err },
         }));
     })
-    .catch((err) => next({
-      log: 'An error occurred accessing the database in loginController.',
-      status: 500,
-      message: { err },
-    }));
+    .catch((err) => {
+      res.locals.redirect = true;
+      res.redirect('/');
+      return next({
+        log: 'An error occurred accessing the database in loginController.',
+        status: 500,
+        message: { err },
+      });
+    });
 };
 
 module.exports = authControllers;
