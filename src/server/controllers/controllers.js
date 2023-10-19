@@ -6,10 +6,13 @@ const db = require('../models/models');
 const controller = {};
 
 controller.getFloors = (req, res, next) => {
-  // console.log('got here');
+  const { wing } = req.params;
+  console.log('wing:', wing);
 
-  const selector = 'SELECT roomnumber, task FROM floors ORDER BY roomnumber';
-  db.query(selector)
+  const queryParams = [wing];
+
+  const selector = 'SELECT * FROM floors WHERE wing = $1 ORDER BY roomnumber';
+  db.query(selector, queryParams)
     .then((data) => {
       res.locals.floorData = data.rows;
       next();
@@ -25,11 +28,11 @@ controller.getFloors = (req, res, next) => {
 
 controller.completeTask = (req, res, next) => {
   console.log('req.body: ', req.body);
-  const { roomNumber, newStatus } = req.body;
+  const { roomNumber, newStatus, wing } = req.body;
 
   // paramaterize query and send it
-  const queryParams = [roomNumber, newStatus];
-  const sqlCommand = 'UPDATE floors SET task = $2 WHERE roomnumber = $1';
+  const queryParams = [roomNumber, newStatus, wing];
+  const sqlCommand = 'UPDATE floors SET task = $2 WHERE roomnumber = $1 AND wing = $3';
 
   db.query(sqlCommand, queryParams)
     .then((data) => {
@@ -41,6 +44,5 @@ controller.completeTask = (req, res, next) => {
       message: { err },
     }));
 };
-
 
 module.exports = controller;

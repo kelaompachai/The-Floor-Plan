@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 router.get(
-  '/',
+  '/:wing',
   controller.getFloors,
   (req, res) => res.status(200).json(res.locals.floorData),
 );

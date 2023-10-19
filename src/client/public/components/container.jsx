@@ -8,12 +8,16 @@ import RoomManifest from './roomManifest';
 
 function Container(props) {
   const {
-    displayBlue, showWing, rooms, displayRoomInfo, showRoomInfo, exitRoomInfo,
+    displayBlue, showWing, rooms, displayRoomInfo, showRoomInfo, exitRoomInfo, completeTaskHandler,
   } = props;
 
   if (displayRoomInfo) {
     return (
-      <RoomManifest displayRoomInfo={displayRoomInfo} exitRoomInfo={exitRoomInfo} />
+      <RoomManifest
+        displayRoomInfo={displayRoomInfo}
+        exitRoomInfo={exitRoomInfo}
+        completeTaskHandler={completeTaskHandler}
+      />
     );
   }
 
