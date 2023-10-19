@@ -12,8 +12,9 @@ const app = express();
 // set PORT
 const PORT = 3000;
 
-// require in the router
+// require in the routers
 const router = require('./routes/router');
+const authRouter = require('./routes/authRouter');
 
 // parse incoming urlencoded information
 app.use(bodyParser.urlencoded());
@@ -26,19 +27,15 @@ app.get('/', (req, res) => res.redirect('/auth.html'));
 
 // serve static files
 // serve index.html and styles.css when get request is made to root url
-app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
+// app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
 // serve bundle.js when it is requested by index.html
-app.use('/dist', express.static(path.join(__dirname, '..', '..', 'dist')));
+// app.use('/dist', express.static(path.join(__dirname, '..', '..', 'dist')));
 
 
 app.use('/data', router);
 
 // working on a route for authentication page
-app.post('/users', (req, res) => {
-  console.log('req.headers', req.headers);
-  console.log('req.body', req.body);
-  res.redirect('/');
-});
+app.use('/users', authRouter);
 
 // serve the bundle.js file when it is requested from the index.html
 // app.get('/dist/bundle.js', (req, res, next) => {
