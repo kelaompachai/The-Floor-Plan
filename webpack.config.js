@@ -3,10 +3,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: path.join(__dirname, 'src', 'index.jsx'),
+  entry: {
+    app: path.join(__dirname, 'src', 'index.jsx'),
+    auth: path.join(__dirname, 'src', 'auth.jsx'),
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
   },
   mode: process.env.NODE_ENV,
   module: {
@@ -28,7 +31,18 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: true,
+      filename: 'app.html',
+      chunks: ['app'],
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      filename: 'auth.html',
+      chunks: ['auth'],
+    }),
+  ],
   devServer: {
     port: 8080,
     hot: true,

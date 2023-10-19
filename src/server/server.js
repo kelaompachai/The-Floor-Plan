@@ -15,7 +15,8 @@ const router = require('./routes/router');
 // parse incoming request body
 app.use(express.json());
 
-
+// redirect requests for the root file to login page
+app.get('/', (req, res) => res.redirect('/auth.html'));
 
 // serve static files
 // serve index.html and styles.css when get request is made to root url
