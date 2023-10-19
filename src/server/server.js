@@ -22,25 +22,17 @@ app.use(bodyParser.urlencoded());
 // parse incoming request body
 app.use(express.json());
 
-// redirect requests for the root file to login page
 app.get('/', (req, res) => res.redirect('/auth.html'));
+// app.get('/app.html', (req, res) => res.redirect('/auth.html'));
 
-// serve static files
-// serve index.html and styles.css when get request is made to root url
-// app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
-// serve bundle.js when it is requested by index.html
-// app.use('/dist', express.static(path.join(__dirname, '..', '..', 'dist')));
+// serve static files from the dist directory
+app.use(express.static('dist'));
 
-
+// route for requests for data
 app.use('/data', router);
 
 // working on a route for authentication page
 app.use('/users', authRouter);
-
-// serve the bundle.js file when it is requested from the index.html
-// app.get('/dist/bundle.js', (req, res, next) => {
-//   res.sendFile(path.join(__dirname, '..', '..', 'dist', 'bundle.js'));
-// });
 
 // every request that was not previously handled should receive a 404 response
 app.use((req, res) => {
