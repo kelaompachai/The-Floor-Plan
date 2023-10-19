@@ -10,6 +10,8 @@ const router = express.Router();
 router.post(
   '/signup',
   authControllers.signupController,
+  authControllers.setSSIDCookie,
+  authControllers.startSession,
   (req, res) => {
     res.redirect('/app.html');
   },
@@ -18,6 +20,8 @@ router.post(
 router.post(
   '/login',
   authControllers.loginController,
+  authControllers.setSSIDCookie,
+  authControllers.startSession,
   (req, res) => {
     res.redirect('/app.html');
   },

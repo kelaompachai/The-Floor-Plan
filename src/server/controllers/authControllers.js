@@ -73,4 +73,22 @@ authControllers.loginController = (req, res, next) => {
     });
 };
 
+authControllers.setSSIDCookie = (req, res, next) => {
+  // set the session cookie on the users browser
+  console.log('entered setSSIDCookie');
+  next();
+};
+
+authControllers.isLoggedIn = (req, res, next) => {
+  // if req does not have proper cookie, deny access
+  console.log('entered isLoggedIn');
+  next();
+};
+
+authControllers.startSession = (req, res, next) => {
+  // register session that just began after logging in or create account in the database
+  console.log('entered startSession');
+  next();
+};
+
 module.exports = authControllers;
