@@ -7,7 +7,7 @@ const controller = {};
 
 controller.getFloors = (req, res, next) => {
   const { wing } = req.params;
-  console.log('wing:', wing);
+  // console.log('wing:', wing);
 
   const queryParams = [wing];
 
@@ -27,7 +27,7 @@ controller.getFloors = (req, res, next) => {
 };
 
 controller.completeTask = (req, res, next) => {
-  console.log('req.body: ', req.body);
+  // console.log('req.body: ', req.body);
   const { roomNumber, newStatus, wing } = req.body;
 
   // paramaterize query and send it
