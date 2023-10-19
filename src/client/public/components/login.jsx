@@ -10,7 +10,7 @@ function login() {
           <label htmlFor="username">Username</label>
           <input name="username" type="text" id="username" />
           <label htmlFor="password">Password</label>
-          <input name="password" type="text" id="password" />
+          <input name="password" type="password" id="password" />
           <div className="button-div">
             <button type="submit" formAction="/users/login">Login</button>
             <button type="submit" formAction="/users/signup">Sign up</button>
