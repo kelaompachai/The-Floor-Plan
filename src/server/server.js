@@ -16,17 +16,12 @@ const PORT = 3000;
 const router = require('./routes/router');
 const authRouter = require('./routes/authRouter');
 
-// parse incoming urlencoded information
+// parse incoming urlencoded information and request body
 app.use(bodyParser.urlencoded());
-
-// parse incoming request body
 app.use(express.json());
 
-app.get('/', (req, res) => res.redirect('/auth.html'));
-// app.get('/app.html', (req, res) => res.redirect('/auth.html'));
-
-// serve static files from the dist directory
-app.use(express.static('dist'));
+// app.get('/', (req, res) => res.redirect('/auth.html'));
+// app.use(express.static('dist'));
 
 // route for requests for data
 app.use('/data', router);

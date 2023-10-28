@@ -1,6 +1,5 @@
 // this is where the database and the server should connect
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 const { Pool } = require('pg');
 require('dotenv').config();
 

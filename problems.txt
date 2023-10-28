@@ -1,1 +1,2 @@
+deny access to app page to unauthorized users without denying access to login page
 
