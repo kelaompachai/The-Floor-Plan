@@ -1,2 +1,1 @@
-hot module replacement with webpack
-eslint not recognizing jsx
+
