@@ -4,12 +4,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: path.join(__dirname, 'src', 'index.jsx'),
-    auth: path.join(__dirname, 'src', 'auth.jsx'),
+    app: {
+      import: path.join(__dirname, 'src', 'index.jsx'),
+      filename: path.join('private', 'app.bundle.js'),
+    },
+    auth: {
+      import: path.join(__dirname, 'src', 'auth.jsx'),
+      filename: path.join('public', 'auth.bundle.js'),
+    },
   },
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    // path: path.join(__dirname, 'dist'),
+    // filename: '[name].bundle.js',
     clean: true,
   },
   mode: process.env.NODE_ENV,
@@ -35,12 +41,12 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      filename: 'app.html',
+      filename: 'private/app.html',
       chunks: ['app'],
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      filename: 'auth.html',
+      filename: 'public/auth.html',
       chunks: ['auth'],
     }),
   ],

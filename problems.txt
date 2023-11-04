@@ -1,2 +1,13 @@
-deny access to app page to unauthorized users without denying access to login page
+problem: deny access to app page to unauthorized users without denying access to login page
 
+solution:
+  configure webpack so that it outputs into two folders public and private
+  output auth.html and auth.bundle.js into the public folder
+  and app.html and app.bundle.js into the private folder
+  Then you can statically serve the public folder
+
+  set up a route so that if a get is sent to '/app'
+    first a cookie is checked for
+    if the cookie is found, send back app.html; otherwise send back a 403 forbidden
+
+    if necessary, set up a similar route for app.bundle.js

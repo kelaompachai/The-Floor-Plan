@@ -20,8 +20,8 @@ const authRouter = require('./routes/authRouter');
 app.use(bodyParser.urlencoded());
 app.use(express.json());
 
-// app.get('/', (req, res) => res.redirect('/auth.html'));
-// app.use(express.static('dist'));
+app.get('/', (req, res) => res.redirect('/auth.html'));
+app.use(express.static('dist/public'));
 
 // route for requests for data
 app.use('/data', router);
