@@ -29,6 +29,10 @@ app.use('/data', router);
 // working on a route for authentication page
 app.use('/users', authRouter);
 
+app.get('/app.html', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', '..', 'dist', 'private', 'app.html'));
+});
+
 // every request that was not previously handled should receive a 404 response
 app.use((req, res) => {
   // res.write('Cannot find requested file.');
